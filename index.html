@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apology</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f8f9fa;
+      }
+
+      .container {
+        text-align: center;
+        position: relative;
+      }
+
+      .heart-animation {
+        animation: heartbeat 1s infinite;
+      }
+
+      @keyframes heartbeat {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .heart {
+        width: 100px;
+        height: 90px;
+        position: absolute;
+        top: calc(50% - 45px); /* Center vertically */
+        left: calc(50% - 50px); /* Center horizontally */
+        animation: pulse 1s infinite;
+      }
+
+      .heart::before,
+      .heart::after {
+        content: "";
+        width: 50px;
+        height: 80px;
+        position: absolute;
+        background: red;
+        border-radius: 50px 50px 0 0;
+      }
+
+      .heart::before {
+        top: -50px;
+        left: 50px;
+        transform: rotate(-45deg);
+        transform-origin: 0 100%;
+      }
+
+      .heart::after {
+        top: -50px;
+        left: 0;
+        transform: rotate(45deg);
+        transform-origin: 100% 100%;
+      }
+
+      h1 {
+        color: #333;
+        margin-top: 20px;
+      }
+
+      p {
+        color: #555;
+        font-size: 18px;
+        margin-bottom: 30px;
+        line-height: 1.6;
+      }
+
+      button {
+        padding: 10px 20px;
+        background-color: #ff4d4d;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #ff3333;
+      }
+
+      .apology-message {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(255, 77, 77, 0.8); /* Semi-transparent red */
+        color: #fff !important; 
+        padding: 20px;
+        border-radius: 10px;
+        z-index: 9999;
+        animation: slideIn 0.5s ease-in-out forwards,
+          fadeOut 0.5s 2.5s ease-in-out forwards;
+      }
+
+      @keyframes slideIn {
+        from {
+          top: -50px;
+        }
+        to {
+          top: 20px;
+        }
+      }
+
+      @keyframes fadeOut {
+        from {
+          opacity: 1;
+        }
+        to {
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="heart-animation">
+        <div class="heart"></div>
+      </div>
+      <h1>Sorry</h1>
+      <p>
+        I'm really sorry babe, for what happend. please forgive me 🙏🏻
+      </p>
+      <button onclick="apologize()">Apologize</button>
+    </div>
+
+    <script>
+      function apologize() {
+        var apologyMessage = document.createElement("div");
+        apologyMessage.innerHTML =
+          "<p>I'm sorry, Neha. Please forgive me. I value you more than anything🩷🩷.</p>";
+        apologyMessage.classList.add("apology-message");
+        document.body.appendChild(apologyMessage);
+
+        setTimeout(function () {
+          apologyMessage.remove();
+        }, 5000); // Remove the message after 3 seconds (3000 milliseconds)
+      }
+    </script>
+  </body>
+</html>
